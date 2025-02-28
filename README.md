@@ -1,4 +1,27 @@
 # MfeBlueWave
+ng new mfe-blue-wave --create-application='false' 
+cd mfe-blue-wave   
+ng g application host-app --routing --style=scss        
+ng g application mfe1-app --routing --style=scss            
+ng g application mfe2-app --routing --style=scss  
+ng add @angular-architects/module-federation@^15 --project=host-app --port 4000 --type=host 
+
+ng add @angular-architects/module-federation@^15 --project=mfe1-app --port 4001 --type=remote
+
+ng add @angular-architects/module-federation@^15 --project=mfe2-app --port 4002 --type=remote
+
+ng s host-app -o
+
+ng s mfe1-app -o
+
+ng s mfe2-app -o
+
+ng g c home --project=host-app
+
+ng g m order --project=mfe1-app --routing
+
+ng g c order --project=mfe1-app
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 
@@ -29,17 +52,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-ng new mfe-blue-wave --create-application='false' 
-cd mfe-blue-wave   
-ng g application host-app --routing --style=scss        
-ng g application mfe1-app --routing --style=scss            
-ng g application mfe2-app --routing --style=scss  
-ng add @angular-architects/module-federation@^15 --project=host-app --port 4000 --type=host  
-ng add @angular-architects/module-federation@^15 --project=mfe1-app --port 4001 --type=remote
-ng add @angular-architects/module-federation@^15 --project=mfe2-app --port 4002 --type=remote
-ng s host-app -o
-ng s mfe1-app -o
-ng s mfe2-app -o
-ng g c home --project=host-app
-ng g m order --project=mfe1-app --routing
-ng g c order --project=mfe1-app
